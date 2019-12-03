@@ -75,7 +75,7 @@ func login(page *agouti.Page) error {
 	}
 	return nil
 }
-func genTimeCardUrl() (string, error) {
+func genTimeCardURL() (string, error) {
 	if *month == "" {
 		*month = time.Now().Format("2006-01")
 	}
@@ -106,12 +106,12 @@ func hack() error {
 		// fmt.Println("トップリンクあった")
 		// 一覧画面
 		//fmt.Println("show time_cards")
-		timeCardUrl, err := genTimeCardUrl()
+		timeCardURL, err := genTimeCardURL()
 		if err != nil {
 			return xerrors.Errorf(": %w", err)
 		}
 		fmt.Printf("%sの勤怠チェック\n", *month)
-		if err := page.Navigate(timeCardUrl); err != nil {
+		if err := page.Navigate(timeCardURL); err != nil {
 			return xerrors.Errorf(": %w", err)
 		}
 
